@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Loader from './Loader';
+import Loader from "./Loader";
 
 const weatherData = [
   {
@@ -80,7 +80,7 @@ export default function App() {
     try {
       setIsLoading(true);
       const res = await fetch(
-        `http://api.weatherapi.com/v1/forecast.json?key=${KEY}&q=${search}&days=5&aqi=no&alerts=no`
+        `https://api.weatherapi.com/v1/forecast.json?key=${KEY}&q=${search}&days=5&aqi=no&alerts=no`
       );
       const data = await res.json();
       setQuery(data);
@@ -117,33 +117,37 @@ export default function App() {
         )}
       </SearchLocation>
 
-    {/* <Loader /> */ }
-        <DisplayWeather>
-         <DegreeButton />
+      {/* <Loader /> */}
+      <DisplayWeather>
+        <DegreeButton />
 
-          <WeatherList query={query} />
+        <WeatherList query={query} />
 
-          <TodayHighlight />
-          <div className="flex justify-center items-center flex-col sm:flex-row gap-[26px] slide-bottom">
-            <WindSpeed query={query} />
-            <Humidity query={query} />
-            <AirPressure query={query} />
-          </div> 
-        </DisplayWeather> 
+        <TodayHighlight />
+        <div className="flex justify-center items-center flex-col sm:flex-row gap-[26px] slide-bottom">
+          <WindSpeed query={query} />
+          <Humidity query={query} />
+          <AirPressure query={query} />
+        </div>
+      </DisplayWeather>
     </div>
   );
 }
 
 //function Loading() {
- // return (
-  //  <div className="flex justify-center w-full items-center h-screen bg-displayweather ">
-    //  <h4>Loading...</h4>
-   // </div>
-  //);
+// return (
+//  <div className="flex justify-center w-full items-center h-screen bg-displayweather ">
+//  <h4>Loading...</h4>
+// </div>
+//);
 //}
 
 function SearchLocation({ children }) {
-  return <div className="w-full sm:w-[459px] bg-searchlocation h-[810px] sm:h-screen">{children}</div>;
+  return (
+    <div className="w-full sm:w-[459px] bg-searchlocation h-[810px] sm:h-screen">
+      {children}
+    </div>
+  );
 }
 
 function SearchData({ onClickSearch, query }) {
@@ -391,7 +395,7 @@ function WeatherCard({ day, shower, tempmax, tempmin, isToday, formatDay }) {
   return (
     <li className="slide-bottom flex flex-col justify-center items-center w-[120px] h-[177px] bg-searchlocation py-[18px] px-6 overflow-hidden">
       <p className="text-center text-searchtext1 text-[11px] leading-normal font-medium">
-        {isToday ? 'Tomorrow' : formatDay(day.date)}
+        {isToday ? "Tomorrow" : formatDay(day.date)}
       </p>
       <img
         className="pt-2.5"
@@ -411,19 +415,21 @@ function WeatherCard({ day, shower, tempmax, tempmin, isToday, formatDay }) {
 }
 
 function DegreeButton() {
+  //const [toggleDegree, setToggleButton] = useState(false)
 
-//const [toggleDegree, setToggleButton] = useState(false)
-
-function handleFahrenheit () {
-//setToggleButton(toggleDegree => toggleDegree = true)
-}
+  function handleFahrenheit() {
+    //setToggleButton(toggleDegree => toggleDegree = true)
+  }
   return (
     <div className="hidden sm:flex justify-end items-end gap-3">
-      <button  className="w-10 h-10 rounded-full bg-searchtext1 box-shadow p-2">
+      <button className="w-10 h-10 rounded-full bg-searchtext1 box-shadow p-2">
         <span className="text-textweather">℃</span>
       </button>
-      <button onClick={handleFahrenheit} className="w-10 h-10 rounded-full bg-searchbutton box-shadow p-2">
-        <span className='text-searchtext1'>℉</span>
+      <button
+        onClick={handleFahrenheit}
+        className="w-10 h-10 rounded-full bg-searchbutton box-shadow p-2"
+      >
+        <span className="text-searchtext1">℉</span>
       </button>
     </div>
   );
@@ -436,5 +442,3 @@ function TodayHighlight() {
     </p>
   );
 }
-
-
