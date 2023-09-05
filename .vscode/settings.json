@@ -1,0 +1,23 @@
+{
+  "editor.fontSize": 15,
+  "editor.fontFamily": "SF Mono, Monaco",
+  "editor.tabSize": 2,
+  "editor.fontWeight": "normal",
+  "window.zoomLevel": -0.5,
+  "editor.scrollbar.verticalScrollbarSize": 12,
+  "editor.scrollbar.horizontalScrollbarSize": 12,
+"editor.minimap.enabled": false,
+
+
+"workbench.iconTheme": "material-icon-theme",
+"workbench.editor.showIcons": true,
+"workbench.activityBar.visible": true,
+"workbench.colorCustomizations": {
+  "activityBarBadge.background": "#ef9b14",
+  "editor.cursorStyle": "line-thin",
+  "editor.matchBrackets": true,
+
+
+}
+
+}
